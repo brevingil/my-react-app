@@ -1,0 +1,398 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.content {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #2980b9;
+}
+
+.btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* OTP Styles */
+.otp-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.otp-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.otp-input {
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.otp-timer {
+    margin: 15px 0;
+    color: #666;
+}
+
+.otp-error {
+    color: #e74c3c;
+    margin: 10px 0;
+    padding: 10px;
+    background: #ffeaea;
+    border-radius: 5px;
+    display: none;
+}
+
+.otp-success {
+    color: #27ae60;
+    margin: 10px 0;
+    padding: 10px;
+    background: #eaffea;
+    border-radius: 5px;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading {
+    color: #3498db;
+    margin: 10px 0;
+}
+
+/* Test Interface Styles */
+.message-container {
+    display: none;
+}
+
+.timer-container {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff3cd;
+    border-radius: 5px;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0ee7d4;
+}
+
+.timer-warning {
+    font-size: 0.9rem;
+    color: #856404;
+}
+
+.message-box {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.message-text {
+    line-height: 1.6;
+    margin: 0;
+}
+
+.response-box {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+}
+
+.char-count {
+    text-align: right;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.progress {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Completion Message */
+.completed {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+.view-responses-btn {
+    background: #27ae60;
+    margin-bottom: 10px;
+}
+
+.view-responses-btn:hover {
+    background: #219653;
+}
+
+.admin-btn {
+    background: #95a5a6;
+}
+
+.admin-btn:hover {
+    background: #7f8c8d;
+}
+
+/* Timeout Message */
+.timeout-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.error-icon {
+    font-size: 4rem;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+/* Admin Panel */
+.admin-panel {
+    display: none;
+    padding: 20px;
+}
+
+.back-btn {
+    background: #95a5a6;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background: #7f8c8d;
+}
+
+/* Access Denied Styles */
+.access-denied {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.access-denied .icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.access-denied h2 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.warning-box {
+    background: rgba(255, 107, 107, 0.1);
+    border-left: 4px solid #ff6b6b;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.contact-info {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.email-link {
+    color: #4dabf7;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.email-link:hover {
+    color: #339af0;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.contact-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.email-duplicate-error {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Paste Warning Styles */
+#paste-warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ff4444;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 300px;
+}
+
+/* Critical timer animation */
+.critical {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.invalid {
+    color: #e74c3c !important;
+}
+
+/* Response item styles */
+.response-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+.user-responses {
+    background: #e8f4fd;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    border: 1px solid #b3d9ff;
+}
+
+/* Email validation styles */
+.email-valid {
+    border-color: #27ae60 !important;
+    background-color: #f8fff8 !important;
+}
+
+.email-invalid {
+    border-color: #e74c3c !important;
+    background-color: #fff8f8 !important;
+}
+
+.email-warning {
+    border-color: #f39c12 !important;
+    background-color: #fffbf0 !important;
+}
+
+/* Domain warning */
+.domain-warning {
+    color: #f39c12;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: none;
+}

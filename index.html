@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Moderating Test</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Access Denied Message -->
+        <div id="access-denied" class="access-denied">
+            <div class="icon">🚫</div>
+            <h2>Access Denied</h2>
+            <p>You have already completed this test.</p>
+            <p>This screening test can only be taken once.</p>
+            <div class="warning-box">
+                <p><strong>Note:</strong> This restriction is based on The Reply Suite rules and guidelines. If you believe this is an error, please contact support.</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Contact Support</h3>
+                <p>Email: <span class="email-link" id="email-link">info@thereplysuite.com</span></p>
+                
+                <div class="contact-options">
+                    <button class="contact-btn" id="email-btn">Send Email</button>
+                    <button class="contact-btn" id="copy-email-btn">Copy Email Address</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="registration">
+            <div class="header">
+                <h1>The Reply Suite</h1>
+                <p>Screening</p>
+            </div>
+            
+            <div class="content">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                    <div class="error" id="name-error">Please enter a valid name</div>
+                </div>
+                
+<div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email address">
+    <div class="error" id="email-error">Please enter a valid email address</div>
+    <div class="email-duplicate-error" id="email-duplicate-error">
+        This email address has already been used for this test.
+    </div>
+    <div class="domain-warning" id="domain-warning">
+        Please use Gmail, Yahoo, Outlook, or other major email providers.
+    </div>
+</div>
+
+                <div class="form-group">
+                    <label for="email">Confirm Email</label>
+                    <input type="email" id="email" placeholder="Enter your email address">
+                    <div class="error" id="email-error">Please enter a valid email address</div>
+                    <div class="email-duplicate-error" id="email-duplicate-error">
+                        This email address has already been used for this test.
+                    </div>
+                </div>
+                
+                <button class="btn" id="start-btn">Start Test</button>
+            </div>
+        </div>
+
+        <!-- OTP Verification Section -->
+        <div id="otp-verification" class="hidden">
+            <div class="header">
+                <h1>Email Verification</h1>
+                <p>Enter the code sent to your email</p>
+            </div>
+            
+            <div class="content">
+                <div class="otp-container">
+                    <h2>Verify Your Email</h2>
+                    <p>We've sent a 6-digit verification code to:</p>
+                    <p id="otp-email-display" class="otp-email-display">user@example.com</p>
+                    
+                    <div class="loading" id="otp-loading">Sending verification code to your email...</div>
+                    
+                    <div class="otp-input-container">
+                        <input id="otp-0" type="text" class="otp-input" maxlength="1" data-index="0" aria-label="OTP digit 1" placeholder="Digit 1" title="Enter the first digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                        <input id="otp-1" type="text" class="otp-input" maxlength="1" data-index="1" aria-label="OTP digit 2" placeholder="Digit 2" title="Enter the second digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                        <input id="otp-2" type="text" class="otp-input" maxlength="1" data-index="2" aria-label="OTP digit 3" placeholder="Digit 3" title="Enter the third digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                        <input id="otp-3" type="text" class="otp-input" maxlength="1" data-index="3" aria-label="OTP digit 4" placeholder="Digit 4" title="Enter the fourth digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                        <input id="otp-4" type="text" class="otp-input" maxlength="1" data-index="4" aria-label="OTP digit 5" placeholder="Digit 5" title="Enter the fifth digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                        <input id="otp-5" type="text" class="otp-input" maxlength="1" data-index="5" aria-label="OTP digit 6" placeholder="Digit 6" title="Enter the sixth digit of the 6-digit verification code" inputmode="numeric" pattern="[0-9]*">
+                    </div>
+                    
+                    <div class="otp-timer" id="otp-timer">Code expires in: 05:00</div>
+                    
+                    <div class="otp-error" id="otp-error">Invalid verification code. Please try again.</div>
+                    <div class="otp-success" id="otp-success">✓ Verification successful! Redirecting to screening...</div>
+                    
+                    <button class="btn" id="verify-otp-btn" disabled>Verify Code</button>
+                    <button class="btn resend-otp" id="resend-otp-btn" disabled>Resend Code</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Test Content -->
+        <div id="main-content" class="hidden">
+            <div class="header">
+                <h1>The Reply Suite</h1>
+                <p>Screening</p>
+            </div>
+            
+            <div class="content">
+                <!-- Test Interface -->
+                <div id="test-interface">
+                    <!-- Message Response Section -->
+                    <div id="message-container" class="message-container">
+                        <div class="timer-container">
+                            <div class="timer" id="timer">05:00</div>
+                            <div class="timer-warning">Time remaining</div>
+                        </div>
+                        
+                        <div class="message-box">
+                            <p class="message-text" id="message-text">Sample message content will appear here</p>
+                        </div>
+                        
+                        <textarea class="response-box" id="response" placeholder="Type your response here (minimum 85 characters)"></textarea>
+                        
+                        <div class="char-count" id="char-count">0/85 characters</div>
+                        
+                        <button class="btn" id="submit-btn" disabled>Submit Response</button>
+                        
+                        <div class="progress" id="progress">Message 1 of 12</div>
+                    </div>
+                    
+                    <!-- Completion Message -->
+                    <div id="completed" class="completed">
+                        <div class="success-icon">✓</div>
+                        <h2>Test Completed Successfully!</h2>
+                        <p>Thank you for your submissions!</p>
+                        <p>Your responses have been recorded and will be reviewed.</p>
+                        <p>Send an email to info@thereplysuite.com if you don't get the response within 24 hours.</p> 
+                    </div>
+                    
+                    <!-- Timeout Message -->
+                    <div id="timeout-message" class="timeout-message">
+                        <div class="error-icon">⏰</div>
+                        <h2>Time's Up!</h2>
+                        <p>You didn't submit your response in time.</p>
+                        <p>You have been logged out due to inactivity.</p>
+                        <button class="btn" id="restart-btn">Start Over</button>
+                    </div>
+                    
+                    <!-- Admin Panel -->
+                    <div id="admin-panel" class="admin-panel">
+                        <h2>Response History</h2>
+                        <div id="responses-list"></div>
+                        <button class="btn back-btn" id="back-btn">Back to Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+
+    <!-- Right-click → New File → index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Vercel Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hello from Vercel! 🚀</h1>
+    <p>Deployed from VS Code</p>
+</body>
+</html>
